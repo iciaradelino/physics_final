@@ -45,32 +45,29 @@ int main() {
     // Seed the random number generator
     srand(time(NULL));
 
-    printf("Initializing network...
-");
+    printf("Initializing network...\n");
     initialize_network();
 
-    // TODO: Load training data
+    // Load training data
     printf("Loading training data...\n");
     load_data("fft_diode_dataset.csv");
 
-    // TODO: Implement training loop
+    // Implement training loop
     printf("Starting training...\n");
     train();
 
-    // TODO: Export weights after training
+    // Export weights after training
     printf("Exporting weights...\n");
     export_weights("network_weights.txt");
 
-    printf("Process finished.
-");
+    printf("Process finished.\n");
     return 0;
 }
 
 // --- Function Implementations (To be filled in) ---
 
 void initialize_network() {
-    printf("  Initializing hidden weights and biases...
-");
+    printf("  Initializing hidden weights and biases...\n");
     // Initialize hidden layer weights and biases (small random values)
     for (int i = 0; i < INPUT_SIZE; ++i) {
         for (int j = 0; j < HIDDEN_SIZE; ++j) {
@@ -81,8 +78,7 @@ void initialize_network() {
         hidden_bias[j] = 0.0f; // Initialize biases to zero or small random values
     }
 
-    printf("  Initializing output weights and biases...
-");
+    printf("  Initializing output weights and biases...\n");
     // Initialize output layer weights and biases
     for (int i = 0; i < HIDDEN_SIZE; ++i) {
         for (int j = 0; j < OUTPUT_SIZE; ++j) {
@@ -217,7 +213,7 @@ void load_data(const char* filename) {
                 train_targets[sample_count][0] = 0.0f;
                 train_targets[sample_count][1] = 1.0f;
             } else {
-                fprintf(stderr, "Warning: Unknown label '%s' on line %d\n", token, sample_count + 2); // +2 for 1-based index and header
+                fprintf(stderr, "Warning: Unknown label '%s' on line %d\n", token, sample_count + 2);
                 // Optionally skip this sample or assign a default target
                  continue; // Skip this sample if label is unknown
             }
